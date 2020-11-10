@@ -5,10 +5,10 @@ import MovieCard from "./MovieCard";
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
-  const { movies } = props;
+  const { movies, addToSavedList } = props;
 
   let { id } = useParams();
-  const item = movies.find((item) => item.id == id);
+  const item = movies.find((item) => item.id === id);
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Movie(props) {
             {star}
           </div>
         ))}
-        <div className="save-button">Save</div>
+        <div onClick={() => addToSavedList(`${id}`)} className="save-button">Save</div>
       </div>
     </div>
   );
